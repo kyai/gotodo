@@ -1,11 +1,13 @@
 package main
 
 import (
-	"gotodo/serve"
-
+	_ "gotodo/serve"
+	_ "gotodo/serve/config"
 	_ "gotodo/serve/migrations"
+
+	"gotodo/serve/services"
 )
 
 func main() {
-	serve.HttpHandler()
+	services.HttpHandler()
 }

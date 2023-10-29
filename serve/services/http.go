@@ -1,4 +1,4 @@
-package serve
+package services
 
 import (
 	"gotodo/serve/actions"
@@ -15,7 +15,10 @@ func HttpHandler() {
 
 	api := r.Group("/api")
 	{
-		api.POST("/sysinfo", actions.SystemInfo)
+		api.POST("SystemInfo", actions.SystemInfo)
+		api.POST("SystemConfigs", actions.SystemConfigs)
+		api.POST("GetSystemConfig", actions.GetSystemConfig)
+		api.POST("SetSystemConfig", actions.SetSystemConfig)
 	}
 
 	r.Run(flags.Host + ":" + flags.Port)
