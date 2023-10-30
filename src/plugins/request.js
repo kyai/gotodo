@@ -1,4 +1,6 @@
 import axios from 'axios'
+import toast from './toast'
+import cookies from 'vue-cookies'
 
 // create an axios instance
 const service = axios.create({
@@ -9,6 +11,7 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
     config => {
+        config.headers['Access-Token'] = cookies.get('token')
         return config
     },
     error => {
@@ -19,9 +22,11 @@ service.interceptors.request.use(
 // response interceptor
 service.interceptors.response.use(
     response => {
-        return response
+        return response.data
     },
     error => {
+        let message = error.response && error.response.data
+        toast(message)
         return Promise.reject(error)
     }
 )

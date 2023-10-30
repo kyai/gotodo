@@ -12,4 +12,9 @@ func init() {
 
 	// 创建APPKEY
 	core.Bomb(os.WriteFile(flags.Data+"/todo.key", []byte(core.RandString(32)), os.ModePerm))
+
+	// 读取APPKEY
+	appKey, err := os.ReadFile(flags.Data + "/todo.key")
+	core.Bomb(err)
+	core.AppKey = string(appKey)
 }
