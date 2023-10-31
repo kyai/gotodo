@@ -26,7 +26,7 @@ service.interceptors.response.use(
     },
     error => {
         let message = error.response && error.response.data
-        toast(message)
+        toast.error(message || error.message)
         return Promise.reject(error)
     }
 )

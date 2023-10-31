@@ -10,7 +10,10 @@ import (
 
 func HttpHandler() {
 	r := gin.Default()
-	r.LoadHTMLGlob(flags.View + "/*")
+
+	r.LoadHTMLGlob(flags.View + "/index.html")
+	r.Static("/assets", flags.View+"/assets")
+	r.StaticFile("/favicon.ico", flags.View+"/favicon.ico")
 
 	r.GET("/", actions.Index)
 
@@ -19,6 +22,12 @@ func HttpHandler() {
 	{
 		api.POST("SignUp", actions.SignUp)
 		api.POST("SignIn", actions.SignIn)
+
+		api.POST("Projects", actions.Projects)
+		api.POST("AddProject", actions.AddProject)
+		api.POST("PutProject", actions.PutProject)
+		api.POST("DelProject", actions.DelProject)
+
 		api.POST("SystemInfo", actions.SystemInfo)
 		api.POST("SystemConfigs", actions.SystemConfigs)
 		api.POST("GetSystemConfig", actions.GetSystemConfig)

@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"errors"
 	"gotodo/serve/core"
 	"net/http"
 
@@ -8,7 +9,8 @@ import (
 )
 
 var noAuthPaths = []string{
-	"/api/Login",
+	"/api/SignUp",
+	"/api/SignIn",
 }
 
 func Authorization(c *gin.Context) {
@@ -20,11 +22,11 @@ func Authorization(c *gin.Context) {
 
 	token := c.GetHeader("Access-Token")
 	if token == "" {
-		c.AbortWithStatus(http.StatusUnauthorized)
+		c.AbortWithError(http.StatusUnauthorized, errors.New("no token"))
 	}
 
 	_, err := core.Detoken(token)
 	if err != nil {
-		c.AbortWithStatus(http.StatusUnauthorized)
+		c.AbortWithError(http.StatusUnauthorized, err)
 	}
 }

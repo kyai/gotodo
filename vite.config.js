@@ -18,4 +18,11 @@ export default defineConfig({
       '/api': 'http://0.0.0.0:8000',
     }
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "@/styles/variables.scss";'
+      }
+    }
+  },
 })
