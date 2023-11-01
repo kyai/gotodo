@@ -1,13 +1,16 @@
 <template>
     <v-select
         class="pro-select"
-        item-title="Title"
-        item-value="Id"
+        item-title="title"
+        item-value="id"
         density="compact"
+        bg-color="transparent"
         hide-details
+        hide-no-data
         :loading="loading"
         :items="list"
         v-model="currentId"
+        v-show="list.length"
     />
 </template>
 <style lang="scss">
@@ -54,7 +57,7 @@ export default {
             this.loading = true
             this.$post('Projects').then(res => {
                 this.list = res
-                this.currentId = id || res[0].Id
+                this.currentId = id || res[0].id
                 this.loading = false
             })
         },

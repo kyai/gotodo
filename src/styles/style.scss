@@ -1,0 +1,13 @@
+
+.Toastify__toast-container.app-toast{
+    .Toastify__toast{
+        min-height: 0;
+        padding: 4px;
+    }
+    .Toastify__toast-body{
+        text-align: center;
+    }
+    .Toastify__progress-bar{
+        height: 2px;
+    }
+}

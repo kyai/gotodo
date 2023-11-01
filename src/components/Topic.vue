@@ -2,7 +2,7 @@
 <div class="topic elevation-2">
     <div class="title">{{topic.title}}</div>
     <div class="tasks">
-        <li v-for="v in 100" :key="v">{{v}}</li>
+        <li v-for="v,k in topic.tasks" :key="k">{{v.caption}}</li>
     </div>
 </div>
 </template>

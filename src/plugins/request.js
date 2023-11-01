@@ -1,6 +1,6 @@
 import axios from 'axios'
-import toast from './toast'
 import cookies from 'vue-cookies'
+import { toast } from 'vue3-toastify'
 
 // create an axios instance
 const service = axios.create({

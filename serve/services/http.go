@@ -24,9 +24,14 @@ func HttpHandler() {
 		api.POST("SignIn", actions.SignIn)
 
 		api.POST("Projects", actions.Projects)
+		api.POST("GetProject", actions.GetProject)
 		api.POST("AddProject", actions.AddProject)
 		api.POST("PutProject", actions.PutProject)
 		api.POST("DelProject", actions.DelProject)
+
+		api.POST("AddTopic", actions.AddTopic)
+
+		api.POST("AddTask", actions.AddTask)
 
 		api.POST("SystemInfo", actions.SystemInfo)
 		api.POST("SystemConfigs", actions.SystemConfigs)

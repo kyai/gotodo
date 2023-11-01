@@ -18,11 +18,10 @@ app.use(createPinia())
 app.use(router)
 app.use(vuetify)
 app.use(cookies)
+app.use(toast)
 
 app.config.globalProperties.$post = (url, data) => {
     return request({url, data, method: 'POST'})
 }
-
-app.config.globalProperties.$toast = toast
 
 app.mount('#app')
