@@ -8,6 +8,22 @@ const router = createRouter({
     }, {
         path: '/login',
         component: () => import('./views/Login.vue')
+    }, {
+        path: '/profile',
+        component: () => import('./views/Profile.vue')
+    }, {
+        path: '/system',
+        component: () => import('./views/System.vue'),
+        children: [{
+            path: 'account',
+            component: () => import('./views/systems/Account.vue')
+        }, {
+            path: 'project',
+            component: () => import('./views/systems/Project.vue')
+        }, {
+            path: 'setting',
+            component: () => import('./views/systems/Setting.vue')
+        }]
     }]
 })
 

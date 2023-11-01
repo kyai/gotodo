@@ -19,6 +19,7 @@
 }
 </style>
 <script>
+import { useUserStore } from '@/stores/user'
 export default {
     data(){
         return {
@@ -29,9 +30,8 @@ export default {
     methods: {
         signin(){
             this.signinLoading = true
-            this.$post('SignIn', this.signinForm).then(res => {
+            useUserStore().login(this.signinForm).then(() => {
                 this.$toast('登录成功')
-                this.$cookies.set('token', res, -1)
                 this.$router.push('/')
             }).catch(() => {
                 this.signinLoading = false

@@ -25,8 +25,10 @@ func Authorization(c *gin.Context) {
 		c.AbortWithError(http.StatusUnauthorized, errors.New("no token"))
 	}
 
-	_, err := core.Detoken(token)
+	auth, err := core.Detoken(token)
 	if err != nil {
 		c.AbortWithError(http.StatusUnauthorized, err)
 	}
+
+	c.Set("UID", auth.Uid)
 }

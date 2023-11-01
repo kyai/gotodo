@@ -1,4 +1,10 @@
 
+.app{
+    &-main{
+        padding-top: $topHeight;
+    }
+}
+
 .Toastify__toast-container.app-toast{
     .Toastify__toast{
         min-height: 0;

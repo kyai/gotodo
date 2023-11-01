@@ -1,31 +1,26 @@
 <template>
-<div class="home">
-    <div class="head px-3 bg-grey-darken-1">
-        <div class="float-left">
+<div class="app home">
+    <nav-bar>
+        <template #left>
             <pro-select ref="proSelect" @change="loadProject" />
-        </div>
-        <v-tabs class="float-right" density="compact" hide-slider>
+        </template>
+        <template #right>
             <v-tab @click="addProject">添加项目</v-tab>
             <v-tab @click="addTopic">添加主题</v-tab>
             <v-tab @click="addTask">添加任务</v-tab>
-            <v-tab>username</v-tab>
-        </v-tabs>
-    </div>
-    <div class="main">
+        </template>
+    </nav-bar>
+    <div class="app-main main">
         <topic v-for="topic,k in project.topics" :key="k" :topic="topic" />
     </div>
     <task-editor ref="taskEditor" @submit="loadProject" />
 </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .home{
     width: 100%;
-    height: calc(100% - $topHeight);
+    height: 100%;
     position: fixed;
-}
-.head{
-    height: $topHeight;
-    width: 100%;
 }
 .main{
     width: 100% !important;
@@ -37,6 +32,7 @@
 }
 </style>
 <script>
+import NavBar from '@/components/NavBar.vue'
 import ProSelect from '@/components/ProSelect.vue'
 import Topic from '@/components/Topic.vue'
 import TaskEditor from '@/components/TaskEditor.vue'
@@ -47,6 +43,7 @@ export default {
         }
     },
     components: {
+        NavBar,
         ProSelect,
         Topic,
         TaskEditor,
