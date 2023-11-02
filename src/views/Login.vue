@@ -1,42 +1,66 @@
 <template>
-<div>
-    <div class="panel">
-        <div class="mb-5">GOTODO</div>
-        <div class="signin">
-            <v-text-field label="用户名" v-model="signinForm.username" required variant="outlined" />
-            <v-text-field label="密码" type="password" v-model="signinForm.password" required variant="outlined" />
-            <v-btn :loading="signinLoading" block color="success" size="large" @click="signin">登 录</v-btn>
-        </div>
-        <div class="signup"></div>
-    </div>
-</div>
+<v-layout class="d-block bg-grey-lighten-3">
+    <v-card class="mt-8 mx-auto pa-8" width="480" :loading="loading">
+        <v-card-title class="text-center mb-8">Gotodo</v-card-title>
+        <v-carousel
+            :continuous="false"
+            :show-arrows="false"
+            hide-delimiters
+            height="360"
+            v-model="carousel"
+        >
+            <!-- 登录 -->
+            <v-carousel-item>
+                <sign-in :loading="loading" @submit="signin" @switch="carousel=1" />
+            </v-carousel-item>
+            <!-- 注册 -->
+            <v-carousel-item>
+                <sign-up :loading="loading" @submit="signup" @switch="carousel=0" />
+            </v-carousel-item>
+        </v-carousel>
+    </v-card>
+</v-layout>
 </template>
 <style lang="scss" scoped>
-.panel{
-    width: 360px;
-    height: 100px;
-    margin: 60px auto 0 auto;
+.carousel{
+    width: 320px;
+    margin: 64px auto 0 auto;
 }
 </style>
 <script>
+import SignIn from '@/components/SignIn.vue'
+import SignUp from '@/components/SignUp.vue'
 import { useUserStore } from '@/stores/user'
 export default {
     data(){
         return {
-            signinForm: {},
-            signinLoading: false,
+            carousel: 0,
+            loading: false,
         }
     },
+    components: {
+        SignIn,
+        SignUp,
+    },
     methods: {
-        signin(){
-            this.signinLoading = true
-            useUserStore().login(this.signinForm).then(() => {
+        signin(form){
+            this.loading = true
+            useUserStore().login(form).then(() => {
                 this.$toast('登录成功')
                 this.$router.push('/')
             }).catch(() => {
-                this.signinLoading = false
+                this.loading = false
             })
-        }
+        },
+        signup(form){
+            this.loading = true
+            this.$post('SignUp', form).then(() => {
+                this.$toast('注册成功, 请登录')
+                this.carousel = 0
+            }).catch(() => {
+                this.loading = false
+            })
+        },
     }
 }
 </script>

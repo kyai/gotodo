@@ -76,3 +76,31 @@ func Profile(c *gin.Context) {
 
 	c.JSON(200, user)
 }
+
+func PutProfile(c *gin.Context) {
+	var payload struct {
+		Nickname string `json:"nickname"`
+		Password string `json:"password"`
+	}
+	c.BindJSON(&payload)
+
+	update := map[string]interface{}{
+		"nickname": payload.Nickname,
+	}
+
+	if payload.Password != "" {
+		if len(payload.Password) < 6 {
+			c.String(500, "密码至少6位字符")
+			return
+		}
+		update["password"] = core.Pwd(payload.Password)
+	}
+
+	err := models.DB.Model(&models.User{}).Where("id = ?", c.GetInt64("UID")).Updates(update).Error
+	if err != nil {
+		c.String(500, err.Error())
+		return
+	}
+
+	c.String(200, "OK")
+}

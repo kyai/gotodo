@@ -7,17 +7,22 @@
 </div>
 </template>
 <style lang="scss" scoped>
+$marginTop: 10px;
+$titleHeight: 48px;
 .topic{
     width: 300px;
     height: 100%;
     display: inline-block;
-    margin: 5px 10px 0 10px;
+    margin: $marginTop 10px 0 10px;
     border-radius: 20px 20px 0 0;
+    overflow: hidden;
     .title{
-        height: 30px;
+        height: $titleHeight;
+        line-height: $titleHeight;
+        background: green;
     }
     .tasks{
-        height: calc(100% - 35px);
+        height: calc(100% - $marginTop - $titleHeight);
         overflow-y: auto;
     }
 }

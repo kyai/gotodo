@@ -2,10 +2,10 @@
 <div class="app">
     <nav-bar show-home title="系统设置" />
     <div class="app-main">
-        <v-tabs align-tabs="center" bg-color="teal-darken-3">
-            <v-tab to="/system/account">账号管理</v-tab>
+        <v-tabs align-tabs="center" bg-color="grey-lighten-3">
+            <v-tab to="/system/setting">系统管理</v-tab>
             <v-tab to="/system/project">项目管理</v-tab>
-            <v-tab to="/system/setting">系统设置</v-tab>
+            <v-tab to="/system/account">账号管理</v-tab>
         </v-tabs>
         <router-view />
     </div>

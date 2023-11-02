@@ -5,9 +5,9 @@
             <pro-select ref="proSelect" @change="loadProject" />
         </template>
         <template #right>
-            <v-tab @click="addProject">添加项目</v-tab>
-            <v-tab @click="addTopic">添加主题</v-tab>
-            <v-tab @click="addTask">添加任务</v-tab>
+            <v-tab @click="addProject"><v-icon>mdi-plus</v-icon>添加项目</v-tab>
+            <v-tab @click="addTopic"><v-icon>mdi-plus</v-icon>添加主题</v-tab>
+            <v-tab @click="addTask"><v-icon>mdi-plus</v-icon>添加任务</v-tab>
         </template>
     </nav-bar>
     <div class="app-main main">

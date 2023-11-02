@@ -25,3 +25,7 @@ func Detoken(token string) (*Auth, error) {
 	err := json.Unmarshal([]byte(AesDecrypt(token, AppKey)), auth)
 	return auth, err
 }
+
+func Pwd(s string) string {
+	return MD5(s + AppKey)
+}

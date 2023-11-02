@@ -2,14 +2,14 @@
 <div class="app-navbar px-3 bg-grey-darken-1">
     <v-tabs class="float-left" density="compact" hide-slider>
         <v-tab v-if="showHome" to="/" class="tab-home">
-            <v-icon>mdi-home</v-icon>
+            <v-icon>mdi-home-outline</v-icon>
         </v-tab>
         <slot name="left" />
     </v-tabs>
     <div class="app-navbar-title float-left">{{title}}</div>
     <v-tabs class="float-right" density="compact" hide-slider>
         <slot name="right" />
-        <v-tab id="menu-user">{{uname}}</v-tab>
+        <v-tab id="menu-user"><v-icon>mdi-account-outline</v-icon>{{uname}}</v-tab>
     </v-tabs>
 
     <v-menu activator="#menu-user">
@@ -32,8 +32,10 @@
     width: 100%;
     height: $topHeight;
     position: fixed;
+    z-index: 9999;
     &-title{
         line-height: $topHeight;
+        cursor: default;
     }
 }
 .tab-home{
