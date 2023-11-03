@@ -31,8 +31,6 @@
 .app-navbar{
     width: 100%;
     height: $topHeight;
-    position: fixed;
-    z-index: 9999;
     &-title{
         line-height: $topHeight;
         cursor: default;

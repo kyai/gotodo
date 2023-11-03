@@ -19,6 +19,7 @@
             </v-carousel-item>
         </v-carousel>
     </v-card>
+    <under-bar />
 </v-layout>
 </template>
 <style lang="scss" scoped>
@@ -30,6 +31,7 @@
 <script>
 import SignIn from '@/components/SignIn.vue'
 import SignUp from '@/components/SignUp.vue'
+import UnderBar from '@/components/UnderBar.vue'
 import { useUserStore } from '@/stores/user'
 export default {
     data(){
@@ -41,6 +43,7 @@ export default {
     components: {
         SignIn,
         SignUp,
+        UnderBar,
     },
     methods: {
         signin(form){

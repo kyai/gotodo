@@ -1,5 +1,5 @@
 <template>
-<div class="app home">
+<div class="app">
     <nav-bar>
         <template #left>
             <pro-select ref="proSelect" @change="loadProject" />
@@ -10,27 +10,12 @@
             <v-tab @click="addTask"><v-icon>mdi-plus</v-icon>添加任务</v-tab>
         </template>
     </nav-bar>
-    <div class="app-main main">
+    <div class="app-main text-center overflow-x-auto overflow-y-hidden text-no-wrap">
         <topic v-for="topic,k in project.topics" :key="k" :topic="topic" />
     </div>
     <task-editor ref="taskEditor" @submit="loadProject" />
 </div>
 </template>
-<style lang="scss" scoped>
-.home{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-}
-.main{
-    width: 100% !important;
-    height: 100% !important;
-    text-align: center !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    white-space: nowrap !important;
-}
-</style>
 <script>
 import NavBar from '@/components/NavBar.vue'
 import ProSelect from '@/components/ProSelect.vue'
