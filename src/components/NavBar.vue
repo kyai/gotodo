@@ -14,14 +14,11 @@
 
     <v-menu activator="#menu-user">
         <v-list density="compact">
-            <v-list-item to="/profile">
-                <v-list-item-title>账号设置</v-list-item-title>
-            </v-list-item>
             <v-list-item to="/system">
-                <v-list-item-title>系统设置</v-list-item-title>
+                <v-list-item-title><v-icon>mdi-cog-outline</v-icon> 设置</v-list-item-title>
             </v-list-item>
             <v-list-item @click="logout">
-                <v-list-item-title>退出登录</v-list-item-title>
+                <v-list-item-title><v-icon>mdi-exit-to-app</v-icon> 登出</v-list-item-title>
             </v-list-item>
         </v-list>
     </v-menu>

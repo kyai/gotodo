@@ -3,12 +3,13 @@
     <div class="app-head">
         <nav-bar show-home title="系统设置" />
         <v-tabs align-tabs="center" bg-color="grey-lighten-3">
-            <v-tab to="/system/setting">系统管理</v-tab>
+            <v-tab to="/system/profile">个人资料</v-tab>
             <v-tab to="/system/project">项目管理</v-tab>
             <v-tab to="/system/account">账号管理</v-tab>
+            <v-tab to="/system/setting">系统管理</v-tab>
         </v-tabs>
     </div>
-    <div class="app-main">
+    <div class="app-main pa-4">
         <router-view />
     </div>
 </div>

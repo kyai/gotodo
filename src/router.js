@@ -9,21 +9,21 @@ const router = createRouter({
         path: '/login',
         component: () => import('./views/Login.vue')
     }, {
-        path: '/profile',
-        component: () => import('./views/Profile.vue')
-    }, {
         path: '/system',
         component: () => import('./views/System.vue'),
-        redirect: '/system/setting',
+        redirect: '/system/profile',
         children: [{
+            path: 'profile',
+            component: () => import('./views/Profile.vue')
+        }, {
             path: 'account',
-            component: () => import('./views/systems/Account.vue')
+            component: () => import('./views/Account.vue')
         }, {
             path: 'project',
-            component: () => import('./views/systems/Project.vue')
+            component: () => import('./views/Project.vue')
         }, {
             path: 'setting',
-            component: () => import('./views/systems/Setting.vue')
+            component: () => import('./views/Setting.vue')
         }]
     }]
 })
