@@ -9,6 +9,12 @@ import (
 )
 
 func HttpHandler() {
+	if flags.Debug {
+		gin.SetMode(gin.DebugMode)
+	} else {
+		gin.SetMode(gin.ReleaseMode)
+	}
+
 	r := gin.Default()
 
 	r.LoadHTMLGlob(flags.View + "/index.html")

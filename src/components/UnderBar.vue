@@ -9,6 +9,9 @@
     position: absolute;
     bottom: 0;
     text-align: center;
+    a:hover{
+        color: #000 !important;
+    }
 }
 </style>
 <script>

@@ -15,6 +15,12 @@
     }
 }
 
+.v-table{
+    th, td{
+        text-align: center !important;
+    }
+}
+
 .Toastify__toast-container.app-toast{
     .Toastify__toast{
         min-height: 0;

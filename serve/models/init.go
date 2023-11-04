@@ -27,5 +27,9 @@ func init() {
 	core.Bomb(err)
 	core.Bomb(sqldb.Ping())
 
-	DB = db
+	if flags.Debug {
+		DB = db.Debug()
+	} else {
+		DB = db
+	}
 }

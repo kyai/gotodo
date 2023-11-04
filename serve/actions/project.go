@@ -49,9 +49,31 @@ func AddProject(c *gin.Context) {
 	c.JSON(200, pro.Id)
 }
 
-func PutProject(c *gin.Context) {}
+func PutProject(c *gin.Context) {
+	var payload models.Project
+	c.BindJSON(&payload)
 
-func DelProject(c *gin.Context) {}
+	if err := models.DB.Model(payload).Where("id = ?", payload.Id).Updates(map[string]interface{}{"title": payload.Title}).Error; err != nil {
+		c.String(500, err.Error())
+		return
+	}
+
+	c.String(200, "OK")
+}
+
+func DelProject(c *gin.Context) {
+	var payload struct {
+		Id int64 `json:"id"`
+	}
+	c.BindJSON(&payload)
+
+	if err := models.DB.Delete(&models.Project{}, "id = ?", payload.Id).Error; err != nil {
+		c.String(500, err.Error())
+		return
+	}
+
+	c.String(200, "OK")
+}
 
 func AddTopic(c *gin.Context) {
 	var payload struct {

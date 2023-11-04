@@ -8,6 +8,7 @@ require (
 	github.com/spf13/viper v1.17.0
 	gorm.io/driver/sqlite v1.5.4
 	gorm.io/gorm v1.25.5
+	gorm.io/plugin/soft_delete v1.2.1
 )
 
 require (
